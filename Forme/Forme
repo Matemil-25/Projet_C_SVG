@@ -1,5 +1,5 @@
-#include <studlib.h>
-#include <studiod.h>
+#include <stdlib.h>
+#include <stdio.h>
 #include <stdint.h>
 
 // faire une enumeration de toute les forme
