@@ -26,11 +26,51 @@ typedef struct Forme_S
     int Weidth;
     int Height;
     int Stroke_Weidth;
-    int Color = 0x ;
-    int Color_Stroke = 0x;
+    int Color;
+    int Color_Stroke;
+    int R;
+    int Xr;
+    int Yr;
+    int Points []; 
 }Forme ;
 
-INT Constructeur (INT X,INT Y,INT Weidth,INT height,INT Stroke_Weidth)
+//Fonction: choix de la forme
+
+Forme_T Choix (void)
+{
+    int Choice = 0; 
+    Forme_T F;
+
+    while (Choice == 0)
+    {
+        printf("Quelle Forme, voulez vous afficher ?\n");
+        printf("1-Rectangle     5-Enchainement Ligne\n");
+        printf("2-Elypse        6-Polygone\n");
+        printf("3-Cercle        7-Trajectoire\n");
+        printf("4-Ligne         8-Groupe\n");
+        printf(" : \n");
+        scanf("%d", &Choice);
+
+        switch (Choice)
+        {
+            case 1 : F = Rectangle; break;
+            case 2: F = Elypse; break;
+            case 3: F = Cercle; break;
+            case 4: F = Ligne; break;
+            case 5: F = Enchainement_Ligne; break;
+            case 6: F = Polygone; break;
+            case 7: F = Trajectoire; break;
+            case 8: F = Groupe; break;
+            default: printf("Ce n'est pas dans les choix\n"); break;
+        }
+    }
+    
+    return F;
+}
+
+//Constructeur de forme
+
+int Constructeur (Forme F)
 {
     return 0 ;
 }
