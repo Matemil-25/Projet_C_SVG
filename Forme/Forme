@@ -1,5 +1,6 @@
-#include<studlib.h>
-#include<studio.h>
+#include <studlib.h>
+#include <studiod.h>
+#include <stdint.h>
 
 // faire une enumeration de toute les forme
 
@@ -20,11 +21,16 @@ typedef enum Forme_E
 typedef struct Forme_S
 {
     Forme_T Forme;
-    INT X;
-    INT Y;
-    INT Weidth;
-    INT height;
-    INT Stroke_Weidth;
+    int X;
+    int Y;
+    int Weidth;
+    int Height;
+    int Stroke_Weidth;
+    int Color = 0x ;
+    int Color_Stroke = 0x;
 }Forme ;
 
-
+INT Constructeur (INT X,INT Y,INT Weidth,INT height,INT Stroke_Weidth)
+{
+    return 0 ;
+}
