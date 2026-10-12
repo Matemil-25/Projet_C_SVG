@@ -1,0 +1,30 @@
+#include<studlib.h>
+#include<studio.h>
+
+// faire une enumeration de toute les forme
+
+typedef enum Forme_E
+{
+    Rectangle,
+    Elypse,
+    Cercle,
+    Ligne,
+    Enchainement_Ligne,
+    Polygone,
+    Trajectoire,
+    Groupe
+}Forme_T;
+
+// creer la structure qui va accueilir les formes 
+
+typedef struct Forme_S
+{
+    Forme_T Forme;
+    INT X;
+    INT Y;
+    INT Weidth;
+    INT height;
+    INT Stroke_Weidth;
+}Forme ;
+
+
