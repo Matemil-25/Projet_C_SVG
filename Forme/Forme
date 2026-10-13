@@ -76,7 +76,7 @@ Forme_T Choix (void)
 
 //Constructeur de forme
 
-int Constructeur (Forme_T F)
+Forme Constructeur (Forme_T F)
 {
     Forme Fo;
     
@@ -129,5 +129,5 @@ int Constructeur (Forme_T F)
             Fo.Xr = 0;
             Fo.Yr = 0;
     }
-    return 0 ;
+    return Fo ;
 }
