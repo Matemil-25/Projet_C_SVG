@@ -1,7 +1,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdint.h>
+#define FORME
 
+//==========Enumeration==========
 // faire une enumeration de toute les forme
 
 typedef enum Forme_E
@@ -15,6 +17,15 @@ typedef enum Forme_E
     Trajectoire,
     Groupe
 }Forme_T;
+
+//==========Structure==========
+//Structure Point
+
+typedef struct Point_S
+{
+    int A;
+    int B;
+}Point_T;
 
 // creer la structure qui va accueilir les formes 
 
@@ -31,9 +42,10 @@ typedef struct Forme_S
     int R;
     int Xr;
     int Yr;
-    int Points []; 
+    Point_T Points []; 
 }Forme ;
 
+//==========Fonction==========
 //Fonction: choix de la forme
 
 Forme_T Choix (void)
@@ -70,7 +82,36 @@ Forme_T Choix (void)
 
 //Constructeur de forme
 
-int Constructeur (Forme F)
+int Constructeur (Forme_T F)
 {
+    Forme Fo;
+    
+    switch(F)
+    {
+        case Rectangle : 
+            Fo.X = 0;
+            Fo.Y = 0;
+            Fo.R = 0;
+            Fo.Xr = 0;
+            Fo.Yr = 0;
+            Fo.Points[0];
+        case Elypse :
+            Fo.X = 0;
+            Fo.Y = 0;
+            Fo.R = 0;
+            Fo.Weidth = 0;
+            Fo.Height = 0;
+            Fo.Points[0];
+        case Cercle:
+            Fo.X = 0;
+            Fo.Y = 0;
+            Fo.Weidth = 0;
+            Fo.Height = 0;
+            Fo.Xr = 0;
+            Fo.Yr = 0;
+            Fo.Points[0];
+        case Ligne :
+            break;
+    }
     return 0 ;
 }
