@@ -4,5 +4,31 @@
 
 int main (void)
 {
-    return 0;
+    int C = 0;
+    while (1)
+    {
+        printf("1- Create file\n");
+        printf("2- Save file\n");
+        printf("3- Open file\n");
+        printf("4- Efit file\n");
+        printf("5- Quit\n");
+        printf(" : ");
+        scanf("%d", &C);
+    
+    
+        switch (C)
+        {
+        case 1 :
+            break;
+        case 2 :
+            break;
+        case 3 :
+            break;
+        case 4 :
+            break;
+        default:
+            printf("\n Invalid Command \n");
+        }
+    }
+    return EXIT_SUCCESS;
 }
