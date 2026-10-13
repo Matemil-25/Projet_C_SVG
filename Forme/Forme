@@ -1,7 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdint.h>
-#define FORME
 
 //==========Enumeration==========
 // faire une enumeration de toute les forme
@@ -9,13 +8,11 @@
 typedef enum Forme_E
 {
     Rectangle,
-    Elypse,
-    Cercle,
-    Ligne,
-    Enchainement_Ligne,
-    Polygone,
-    Trajectoire,
-    Groupe
+    Ellipse,
+    Circle,
+    Line,
+    Polyline,
+    Polygon,
 }Forme_T;
 
 //==========Structure==========
@@ -37,8 +34,8 @@ typedef struct Forme_S
     int Weidth;
     int Height;
     int Stroke_Weidth;
-    int Color;
-    int Color_Stroke;
+    int fill;
+    int Stroke;
     int R;
     int Xr;
     int Yr;
@@ -55,24 +52,21 @@ Forme_T Choix (void)
 
     while (Choice == 0)
     {
-        printf("Quelle Forme, voulez vous afficher ?\n");
-        printf("1-Rectangle     5-Enchainement Ligne\n");
-        printf("2-Elypse        6-Polygone\n");
-        printf("3-Cercle        7-Trajectoire\n");
-        printf("4-Ligne         8-Groupe\n");
-        printf(" : \n");
+        printf("Which form do you want to create ?\n");
+        printf("1-Rectangle     4-Line\n");
+        printf("2-Ellipse       5-Polyline\n");
+        printf("3-Circle        6-Polygon\n");
+        printf(" : ");
         scanf("%d", &Choice);
 
         switch (Choice)
         {
             case 1 : F = Rectangle; break;
-            case 2: F = Elypse; break;
-            case 3: F = Cercle; break;
-            case 4: F = Ligne; break;
-            case 5: F = Enchainement_Ligne; break;
-            case 6: F = Polygone; break;
-            case 7: F = Trajectoire; break;
-            case 8: F = Groupe; break;
+            case 2: F = Ellipse; break;
+            case 3: F = Circle; break;
+            case 4: F = Line; break;
+            case 5: F = Polyline; break;
+            case 6: F = Polygon; break;
             default: printf("Ce n'est pas dans les choix\n"); break;
         }
     }
@@ -95,14 +89,14 @@ int Constructeur (Forme_T F)
             Fo.Xr = 0;
             Fo.Yr = 0;
             Fo.Points[0];
-        case Elypse :
+        case Ellipse :
             Fo.X = 0;
             Fo.Y = 0;
             Fo.R = 0;
             Fo.Weidth = 0;
             Fo.Height = 0;
             Fo.Points[0];
-        case Cercle:
+        case Circle:
             Fo.X = 0;
             Fo.Y = 0;
             Fo.Weidth = 0;
@@ -110,8 +104,30 @@ int Constructeur (Forme_T F)
             Fo.Xr = 0;
             Fo.Yr = 0;
             Fo.Points[0];
-        case Ligne :
-            break;
+        case Line :
+            Fo.X = 0;
+            Fo.Y = 0;
+            Fo.Weidth = 0;
+            Fo.Height = 0;
+            Fo.Xr = 0;
+            Fo.Yr = 0;
+            Fo.R = 0;
+        case Polyline :
+            Fo.X = 0;
+            Fo.Y = 0;
+            Fo.Weidth = 0;
+            Fo.Height = 0;
+            Fo.R = 0;
+            Fo.Xr = 0;
+            Fo.Yr = 0;
+        case Polygon :
+            Fo.X = 0;
+            Fo.Y = 0;
+            Fo.Weidth = 0;
+            Fo.Height = 0;
+            Fo.R = 0;
+            Fo.Xr = 0;
+            Fo.Yr = 0;
     }
     return 0 ;
 }
