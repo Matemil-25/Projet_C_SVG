@@ -9,10 +9,8 @@ typedef enum Forme_E
 {
     Rectangle,
     Ellipse,
-    Circle,
     Line,
     Polyline,
-    Polygon,
 }Forme_T;
 
 //==========Structure==========
@@ -53,9 +51,8 @@ Forme_T Choix (void)
     while (Choice == 0)
     {
         printf("Which form do you want to create ?\n");
-        printf("1-Rectangle     4-Line\n");
-        printf("2-Ellipse       5-Polyline\n");
-        printf("3-Circle        6-Polygon\n");
+        printf("1-Rectangle             3-line\n");
+        printf("2-Ellipse/Circle        4-Polygon/Polyline\n");
         printf(" : ");
         scanf("%d", &Choice);
 
@@ -63,10 +60,8 @@ Forme_T Choix (void)
         {
             case 1 : F = Rectangle; break;
             case 2: F = Ellipse; break;
-            case 3: F = Circle; break;
-            case 4: F = Line; break;
-            case 5: F = Polyline; break;
-            case 6: F = Polygon; break;
+            case 3: F = Line; break;
+            case 4: F = Polyline; break;
             default: printf("Ce n'est pas dans les choix\n"); break;
         }
     }
@@ -96,14 +91,6 @@ Forme Constructeur (Forme_T F)
             Fo.Weidth = 0;
             Fo.Height = 0;
             Fo.Points[0];
-        case Circle:
-            Fo.X = 0;
-            Fo.Y = 0;
-            Fo.Weidth = 0;
-            Fo.Height = 0;
-            Fo.Xr = 0;
-            Fo.Yr = 0;
-            Fo.Points[0];
         case Line :
             Fo.X = 0;
             Fo.Y = 0;
@@ -120,14 +107,7 @@ Forme Constructeur (Forme_T F)
             Fo.R = 0;
             Fo.Xr = 0;
             Fo.Yr = 0;
-        case Polygon :
-            Fo.X = 0;
-            Fo.Y = 0;
-            Fo.Weidth = 0;
-            Fo.Height = 0;
-            Fo.R = 0;
-            Fo.Xr = 0;
-            Fo.Yr = 0;
     }
+    
     return Fo ;
 }

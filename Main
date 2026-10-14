@@ -13,8 +13,7 @@ int main (void)
         printf("4- Efit file\n");
         printf("5- Quit\n");
         printf(" : ");
-        scanf("%d", &C);
-    
+        scanf("%d", &C);    
     
         switch (C)
         {
