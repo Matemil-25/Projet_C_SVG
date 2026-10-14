@@ -108,6 +108,6 @@ Forme Constructeur (Forme_T F)
             Fo.Xr = 0;
             Fo.Yr = 0;
     }
-    
     return Fo ;
 }
+

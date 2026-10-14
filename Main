@@ -7,11 +7,12 @@ int main (void)
     int C = 0;
     while (1)
     {
-        printf("1- Create file\n");
-        printf("2- Save file\n");
-        printf("3- Open file\n");
-        printf("4- Efit file\n");
-        printf("5- Quit\n");
+        printf("1- Create Project\n");
+        printf("2- Save Project\n");
+        printf("3- Open Project\n");
+        printf("4- Edit Project\n");
+        printf("5- View Project");
+        printf("6- Quit\n");
         printf(" : ");
         scanf("%d", &C);    
     
@@ -24,6 +25,10 @@ int main (void)
         case 3 :
             break;
         case 4 :
+            break;
+        case 5 :
+            break;
+        case 6 :
             break;
         default:
             printf("\n Invalid Command \n");

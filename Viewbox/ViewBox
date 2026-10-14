@@ -1,0 +1,14 @@
+#include<stdlib.h>
+#include<stdio.h>
+
+int main(void)
+{
+    FILE* Pointeur_File;
+    int x ;
+    int y ;
+    Pointeur_File = fopen("Html_File/Projet_1.html","w");
+    printf("Which size do you want to your Viewbox ? :");
+    scanf(" %d, %d",&x,&y);
+    fprintf(Pointeur_File,"<svg viewBox=\"0 0 %d %d \" xmlns=\"http://www.w3.org/2000/svg\"> ",&x,&y);
+    return 0;
+}
