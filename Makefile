@@ -2,15 +2,16 @@ CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror -std=c99 -fstack-protector
 
-SRC = main.c\
+SRC = 	Main.c\
+
 
 OBJS = $(SRC:.c=.o)
 
-NAME = projet
+NAME = Main
 
-all:$(Name)
+all:$(NAME)
 
-$(Name): $(OBJS)
+$(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
 %.o: %.c
