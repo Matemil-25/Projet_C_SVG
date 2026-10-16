@@ -9,7 +9,6 @@ typedef enum Forme_E
 {
     Rectangle,
     Ellipse,
-    Line,
     Polyline,
 } Forme_T;
 
@@ -53,8 +52,8 @@ Forme_T Choice(void)
     while (Choice == 0)
     {
         printf("Which form do you want to create ?\n");
-        printf("1-Rectangle/square      3-line\n");
-        printf("2-Ellipse/Circle        4-Polygon/Polyline\n");
+        printf("1-Rectangle/square      3-line/Polygon/Polyline\n");
+        printf("2-Ellipse/Circle\n");
         printf(" : ");
 
         if (scanf("%d", &Choice) != 1)
@@ -72,9 +71,6 @@ Forme_T Choice(void)
                 F = Ellipse;
                 break;
             case 3:
-                F = Line;
-                break;
-            case 4:
                 F = Polyline;
                 break;
             default:
@@ -104,13 +100,6 @@ Forme Constructeur(Forme_T F)
             Fo.R = 0;
             Fo.Width = 0;
             Fo.Height = 0;
-            break;
-        case Line:
-            Fo.Width = 0;
-            Fo.Height = 0;
-            Fo.Xr = 0;
-            Fo.Yr = 0;
-            Fo.R = 0;
             break;
         case Polyline:
             Fo.Width = 0;
@@ -157,7 +146,19 @@ int Add_Form (Forme Fo)
         scanf("%d",&Fo.Yr);
         fprintf(Pointeur_File,"<ellipse cx=\"%d\" cy=\"%d\" rx=\"%d\" y=\"%d\"/>\n", Fo.X, Fo.Y, Fo.Xr ,Fo.Yr);
         break;
-    default : 
+    case Polyline :
+        printf("Set your settings : \n");   
+        printf("X1 : ");
+        scanf("%d",&Fo.Points[0].A);
+        printf("Y1 : ");
+        scanf("%d",&Fo.Points[1].B);
+        printf("X2 : ");
+        scanf("%d",&Fo.Points[2].A);
+        printf("Y2 : ");
+        scanf("%d",&Fo.Points[3].B);
+        fprintf(Pointeur_File,"<polyline points=\"%d,%d %d,%d\" stroke=\"black\" />\n", Fo.Points[0].A, Fo.Points[1].B, Fo.Points[2].A ,Fo.Points[3].B);
+        break;
+        default : 
         printf("\n Invalid Form \n");
         break;
     }
