@@ -53,7 +53,7 @@ Forme_T Choice(void)
     while (Choice == 0)
     {
         printf("Which form do you want to create ?\n");
-        printf("1-Rectangle             3-line\n");
+        printf("1-Rectangle/square      3-line\n");
         printf("2-Ellipse/Circle        4-Polygon/Polyline\n");
         printf(" : ");
 
@@ -148,12 +148,18 @@ int Add_Form (Forme Fo)
     case Ellipse :
         printf("Set your settings : \n");
         printf("X : ");
+        scanf("%d",&Fo.X);
+        printf("Y : ");
+        scanf("%d",&Fo.Y);
+        printf("Rx : ");
+        scanf("%d",&Fo.Xr);
+        printf("Ry : ");
+        scanf("%d",&Fo.Yr);
+        fprintf(Pointeur_File,"<ellipse cx=\"%d\" cy=\"%d\" rx=\"%d\" y=\"%d\"/>\n", Fo.X, Fo.Y, Fo.Xr ,Fo.Yr);
         break;
     default : 
         printf("\n Invalid Form \n");
         break;
     }
-    fprintf(Pointeur_File,"</svg>");
-    fclose(Pointeur_File);
     return 0;
 }

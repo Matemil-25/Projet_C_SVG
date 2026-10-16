@@ -6,7 +6,7 @@
 int main (void)
 {
     FILE* Pointeur_File;
-    Pointeur_File = fopen("Html_File/Projet_1.html","w");
+    Pointeur_File = fopen("Html_File/Projet_1.html","a");
     Forme F ;
     int C = 0;
     while (1)
@@ -24,10 +24,13 @@ int main (void)
         {
         case 1 :
             Create_ViewBox();
+            Pointeur_File = fopen("Html_File/Projet_1.html","a");
             Add_Form(F);
+            fclose(Pointeur_File);
             break;
         case 2 :
             fprintf(Pointeur_File,"</svg>");
+            fclose(Pointeur_File);
             break;
         case 3 :
             break;
