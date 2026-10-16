@@ -32,9 +32,9 @@ typedef struct Forme_S
     int Y;
     int Width;
     int Height;
-    int Stroke_Weidth;
-    int fill;
-    int Stroke;
+    int Stroke_Width;
+    char Fill[6];
+    char Stroke[6];
     int R;
     int Xr;
     int Yr;
@@ -82,42 +82,9 @@ Forme_T Choice(void)
     return F;
 }
 
-//Constructeur de forme
-
-Forme Constructeur(Forme_T F)
-{
-    Forme Fo ;
-    Fo.Forme = F;
-
-    switch (F)
-    {
-        case Rectangle:
-            Fo.R = 0;
-            Fo.Xr = 0;
-            Fo.Yr = 0;
-            break;
-        case Ellipse:
-            Fo.R = 0;
-            Fo.Width = 0;
-            Fo.Height = 0;
-            break;
-        case Polyline:
-            Fo.Width = 0;
-            Fo.Height = 0;
-            Fo.R = 0;
-            Fo.Xr = 0;
-            Fo.Yr = 0;
-            break;
-    }
-
-    return Fo;
-}
-
-
 int Add_Form (Forme Fo)
 {
     Fo.Forme = Choice();
-    Fo = Constructeur(Fo.Forme);
     FILE* Pointeur_File;
     Pointeur_File = fopen("Html_File/Projet_1.html","a");
     switch (Fo.Forme)
@@ -132,7 +99,13 @@ int Add_Form (Forme Fo)
         scanf("%d",&Fo.Width);
         printf("Height : ");
         scanf("%d",&Fo.Height);
-        fprintf(Pointeur_File,"<rect x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\"/>\n", Fo.X, Fo.Y, Fo.Width ,Fo.Height);
+        printf("Color Hexa RGB : ");
+        scanf("%6s",Fo.Fill);
+        printf("Stroke width : " );
+        scanf("%d",&Fo.Stroke_Width);
+        printf("Stroke Color Hexa RGB : ");
+        scanf("%6s",Fo.Stroke);
+        fprintf(Pointeur_File,"<rect x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\" fill=\"#%s\" stroke-width=\"%d\" stroke=\"#%s\" />\n", Fo.X, Fo.Y, Fo.Width ,Fo.Height,Fo.Fill,Fo.Stroke_Width,Fo.Stroke);
         break;
     case Ellipse :
         printf("Set your settings : \n");
@@ -144,7 +117,13 @@ int Add_Form (Forme Fo)
         scanf("%d",&Fo.Xr);
         printf("Ry : ");
         scanf("%d",&Fo.Yr);
-        fprintf(Pointeur_File,"<ellipse cx=\"%d\" cy=\"%d\" rx=\"%d\" y=\"%d\"/>\n", Fo.X, Fo.Y, Fo.Xr ,Fo.Yr);
+        printf("Color Hexa RGB : ");
+        scanf("%6s",Fo.Fill);
+        printf("Stroke width : " );
+        scanf("%d",&Fo.Stroke_Width);
+        printf("Stroke Color Hexa RGB : ");
+        scanf("%6s",Fo.Stroke);
+        fprintf(Pointeur_File,"<ellipse cx=\"%d\" cy=\"%d\" rx=\"%d\" y=\"%d\" fill=\"#%s\" stroke-width=\"%d\" stroke=\"#%s\"/>\n", Fo.X, Fo.Y, Fo.Xr ,Fo.Yr,Fo.Fill,Fo.Stroke_Width,Fo.Stroke);
         break;
     case Polyline :
         printf("Set your settings : \n");   
@@ -156,7 +135,11 @@ int Add_Form (Forme Fo)
         scanf("%d",&Fo.Points[2].A);
         printf("Y2 : ");
         scanf("%d",&Fo.Points[3].B);
-        fprintf(Pointeur_File,"<polyline points=\"%d,%d %d,%d\" stroke=\"black\" />\n", Fo.Points[0].A, Fo.Points[1].B, Fo.Points[2].A ,Fo.Points[3].B);
+        printf("Stroke width : " );
+        scanf("%d",&Fo.Stroke_Width);
+        printf("Stroke Color Hexa RGB : ");
+        scanf("%6s",Fo.Stroke);
+        fprintf(Pointeur_File,"<polyline points=\"%d,%d %d,%d\" stroke=\"#%s\" stroke-width=\"%d\" />\n", Fo.Points[0].A, Fo.Points[1].B, Fo.Points[2].A ,Fo.Points[3].B,Fo.Stroke,Fo.Stroke_Width);
         break;
         default : 
         printf("\n Invalid Form \n");
