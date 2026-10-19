@@ -3,6 +3,26 @@
 #include "Forme/Forme.c"
 #include "Viewbox/ViewBox.c"
 
+/**
+ * @brief Fonction principale du programme.
+ *
+ * Cette fonction permet à l'utilisateur d'interagir avec le programme
+ * à travers un menu principal proposant plusieurs fonctionnalités :
+ * - Créer un projet SVG.
+ * - Modifier un projet existant.
+ * - Visualiser un projet.
+ * - Quitter le programme.
+ *
+ * Lors de la création d'un projet, la fonction initialise la ViewBox,
+ * puis permet à l'utilisateur d'ajouter des formes géométriques
+ * au fichier Html_File/Projet_1.html.
+ *
+ * Chaque forme ajoutée reçoit un identifiant incrémenté
+ * afin de pouvoir la distinguer des autres formes du projet.
+ *
+ * @return EXIT_SUCCESS si le programme se termine normalement,
+ *         ou 0 lorsque l'utilisateur choisit de quitter le programme.
+ */
 int main (void)
 {
     FILE* Pointeur_File;

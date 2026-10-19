@@ -2,71 +2,89 @@
 #include <stdio.h>
 #include <stdint.h>
 
-//==========Enumeration==========
-// faire une enumeration de toute les forme
-
+/**
+ * @enum Forme_E
+ * @brief Énumération des formes géométriques disponibles.
+ *
+ * Définit les différents types de formes que le programme
+ * peut créer dans le fichier SVG.
+ */
 typedef enum Forme_E
 {
-    Rectangle,
-    Ellipse,
-    Polyline,
+    Rectangle,  /**< Rectangle ou carré. */
+    Ellipse,    /**< Ellipse ou cercle. */
+    Polyline,   /**< Ligne, polygone ou polyligne. */
 } Forme_T;
 
-//==========Structure==========
-//Structure Point
-
+/**
+ * @struct Point_S
+ * @brief Représente un point en deux dimensions.
+ *
+ * Un point est défini par deux coordonnées entières A et B.
+ */
 typedef struct Point_S
 {
-    int A;
-    int B;
+    int A; /**< Coordonnée horizontale du point. */
+    int B; /**< Coordonnée verticale du point. */
 } Point_T;
 
-// creer la structure qui va accueilir les formes
-
+/**
+ * @def MAX_POINTS
+ * @brief Nombre maximal de points pouvant être stockés pour une forme.
+ */
 #define MAX_POINTS 100
 
+/**
+ * @struct Forme_S
+ * @brief Contient les informations nécessaires à la définition d'une forme.
+ *
+ * Cette structure regroupe le type de forme, son identifiant,
+ * ses dimensions, ses coordonnées, ses couleurs et ses points.
+ */
 typedef struct Forme_S
 {
-    Forme_T Forme;
-    int Id ;
-    int X;
-    int Y;
-    int Width;
-    int Height;
-    int Stroke_Width;
-    char Fill[7];
-    char Stroke[7];
-    int R;
-    int Xr;
-    int Yr;
-    Point_T Points[MAX_POINTS];
+    Forme_T Forme;             /**< Type de la forme géométrique. */
+    int Id;                    /**< Identifiant unique de la forme dans le SVG. */
+    int X;                     /**< Coordonnée horizontale ou centre horizontal. */
+    int Y;                     /**< Coordonnée verticale ou centre vertical. */
+    int Width;                 /**< Largeur de la forme. */
+    int Height;                /**< Hauteur de la forme. */
+    int Stroke_Width;          /**< Épaisseur du contour de la forme. */
+    char Fill[7];              /**< Couleur de remplissage au format hexadécimal RGB. */
+    char Stroke[7];            /**< Couleur du contour au format hexadécimal RGB. */
+    int R;                     /**< Rayon d'un cercle. */
+    int Xr;                    /**< Rayon horizontal d'une ellipse. */
+    int Yr;                    /**< Rayon vertical d'une ellipse. */
+    Point_T Points[MAX_POINTS];/**< Tableau contenant les points de la forme. */
 } Forme;
 
-//==========Fonction==========
-//Fonction: choice de la forme
-
+/**
+ * @brief Demande à l'utilisateur de choisir une forme géométrique.
+ *
+ * Affiche un menu permettant de sélectionner un rectangle,
+ * une ellipse ou une polyligne.
+ *
+ * La fonction redemande un choix tant que l'utilisateur
+ * ne saisit pas une valeur valide parmi les choix proposés.
+ *
+ * @return Le type de forme choisi parmi Rectangle, Ellipse et Polyline.
+ */
 Forme_T Choice(void)
 {
-    int Choice = 0;
-    Forme_T F = Rectangle;
-
-    while (Choice == 0)
+    int Choice = 0;             //Initialisation de la variable choix
+    Forme_T F ;                 //Initialisation de la variable Forme
+    while (Choice == 0)         //Boucle qui demande à l'utilisateur quelle forme veut il créer
     {
         printf("Which form do you want to create ?\n");
         printf("1-Rectangle/square      3-line/Polygon/Polyline\n");
         printf("2-Ellipse/Circle\n");
         printf(" : ");
-
-        if (scanf("%d", &Choice) != 1)
-        {
-            printf("Saisie invalide\n");
-            return Rectangle;
-        }
+        scanf("%d", &Choice);   //Choix de l'utilisateur
 
         switch (Choice)
         {
             case 1:
-                F = Rectangle;
+                F = Rectangle; 
                 break;
             case 2:
                 F = Ellipse;
@@ -83,11 +101,32 @@ Forme_T Choice(void)
     return F;
 }
 
+/**
+ * @brief Ajoute une forme géométrique au fichier SVG.
+ *
+ * Demande à l'utilisateur de choisir une forme et de renseigner
+ * ses caractéristiques.
+ *
+ * Selon le type de forme sélectionné, la fonction récupère les
+ * coordonnées, les dimensions, les couleurs et l'épaisseur du
+ * contour, puis écrit la représentation SVG correspondante dans
+ * le fichier Html_File/Projet_1.html.
+ *
+ * Les formes prises en charge sont :
+ * - Rectangle : crée un élément SVG <rect>.
+ * - Ellipse : crée un élément SVG <ellipse>.
+ * - Polyline : crée un élément SVG <polyline>.
+ *
+ * @param Fo Structure contenant les caractéristiques de la forme.
+ *           Certaines de ses valeurs sont renseignées par l'utilisateur
+ *           au cours de l'exécution de la fonction.
+ *
+ * @return 0 lorsque la fonction atteint la fin de son exécution.
+ */
 int Add_Form (Forme Fo)
 {
     Fo.Forme = Choice();
-    FILE* Pointeur_File;
-    Pointeur_File = fopen("Html_File/Projet_1.html","a");
+    FILE* Pointeur_File = fopen("Html_File/Projet_1.html","a");
     switch (Fo.Forme)
     {
     case Rectangle:
