@@ -17,14 +17,14 @@ typedef enum Forme_E
 } Forme_T;
 
 /**
- * @struct Point_S
+ Point_S
  * @brief Représente un point en deux dimensions.
  *
  * Un point est défini par deux coordonnées entières A et B.
  */
 typedef struct Point_S
 {
-    int A; /**< Coordonnée horizontale du point. */
+    int A; /**< Coordonnée horizontale du point.*/
     int B; /**< Coordonnée verticale du point. */
 } Point_T;
 
@@ -35,7 +35,7 @@ typedef struct Point_S
 #define MAX_POINTS 100
 
 /**
- * @struct Forme_S
+ Forme_S
  * @brief Contient les informations nécessaires à la définition d'une forme.
  *
  * Cette structure regroupe le type de forme, son identifiant,
@@ -71,16 +71,15 @@ typedef struct Forme_S
  */
 Forme_T Choice(void)
 {
-    int Choice = 0;             //Initialisation de la variable choix
-    Forme_T F ;                 //Initialisation de la variable Forme
-    while (Choice == 0)         //Boucle qui demande à l'utilisateur quelle forme veut il créer
+    int Choice = 0;           
+    Forme_T F ;                 
+    while (Choice == 0)         
     {
         printf("Which form do you want to create ?\n");
         printf("1-Rectangle/square      3-line/Polygon/Polyline\n");
         printf("2-Ellipse/Circle\n");
         printf(" : ");
-        scanf("%d", &Choice);   //Choix de l'utilisateur
-
+        scanf("%d", &Choice);   
         switch (Choice)
         {
             case 1:
@@ -166,32 +165,31 @@ int Add_Form (Forme Fo)
         fprintf(Pointeur_File,"<ellipse id=\"%d\" cx=\"%d\" cy=\"%d\" rx=\"%d\" y=\"%d\" fill=\"#%6s\" stroke-width=\"%d\" stroke=\"#%s\"/>\n",Fo.Id, Fo.X, Fo.Y, Fo.Xr ,Fo.Yr,Fo.Fill,Fo.Stroke_Width,Fo.Stroke);
         break;
     case Polyline :
-        int c ;
-        printf("Set your settings : \n");   
-        printf("X1 : ");
-        scanf("%d",&Fo.Points[0].A);
-        printf("Y1 : ");
-        scanf("%d",&Fo.Points[1].B);
-        printf("X2 : ");
-        scanf("%d",&Fo.Points[2].A);
-        printf("Y2 : ");
-        scanf("%d",&Fo.Points[3].B);
-        printf("Stroke width : " );
-        scanf("%d",&Fo.Stroke_Width);
-        printf("Stroke Color Hexa RGB : ");
-        scanf("%6s",Fo.Stroke);
-        printf("Do you want another line ?\n");
-        printf("1-Yes\n");
-        printf("2-No\n");
-        scanf("%d",&c);
-        if(c==2)
-            fprintf(Pointeur_File,"<polyline id=\"%d\" points=\"%d,%d %d,%d\" stroke=\"#%s\" stroke-width=\"%d\" />\n",Fo.Id, Fo.Points[0].A, Fo.Points[1].B, Fo.Points[2].A ,Fo.Points[3].B,Fo.Stroke,Fo.Stroke_Width);
-        else if(c==1)
-            break;
-        else 
-            printf("\n Invalid Synthax\n");
+        int i;
+        int Nb_Points ;
+        printf("Set your settings:\n");
+        printf("How many points do you want? (2-6): ");
+        scanf("%d", &Nb_Points);
+        for (i = 0; i < Nb_Points; i++)
+        {
+            printf("X%d: ", i + 1);
+            scanf("%d", &Fo.Points[i].A);
+            printf("Y%d: ", i + 1);
+            scanf("%d", &Fo.Points[i].B);  
+        }
+        printf("Stroke width: ");
+        scanf("%d", &Fo.Stroke_Width); 
+        printf("Stroke Color Hexa RGB: ");
+        scanf("%6s", Fo.Stroke);
+        fprintf(Pointeur_File,"<polyline id=\"%d\" points=\"",Fo.Id);
+        for (i = 0; i < Nb_Points; i++)
+        {
+            fprintf(Pointeur_File,"%d,%d ",Fo.Points[i].A,Fo.Points[i].B);
+        }
+        fprintf(Pointeur_File,
+                "\" stroke=\"#%s\" stroke-width=\"%d\" />\n",Fo.Stroke,Fo.Stroke_Width);
         break;
-        default : 
+    default : 
         printf("\n Invalid Form \n");
         break;
     }
