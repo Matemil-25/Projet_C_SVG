@@ -10,6 +10,7 @@ int main (void)
     Forme F ;
     int C = 0;
     int Ch = 0;
+    F.Id = 0 ; 
     while (1)
     {
         printf("1- Create Project\n");
@@ -23,6 +24,7 @@ int main (void)
         case 1 :
             Create_ViewBox();
             Ch +=1;
+            
             while (Ch != 0)
             {
                 printf("1-Add Shape\n");
@@ -34,6 +36,7 @@ int main (void)
                     Pointeur_File = fopen("Html_File/Projet_1.html","a");
                     Add_Form(F);
                     fclose(Pointeur_File);
+                    F.Id += 1 ;
                 }
                 else if (Ch ==2)
                     Ch = 0;

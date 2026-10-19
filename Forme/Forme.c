@@ -28,6 +28,7 @@ typedef struct Point_S
 typedef struct Forme_S
 {
     Forme_T Forme;
+    int Id ;
     int X;
     int Y;
     int Width;
@@ -105,7 +106,7 @@ int Add_Form (Forme Fo)
         scanf("%d",&Fo.Stroke_Width);
         printf("Stroke Color Hexa RGB : ");
         scanf("%6s",Fo.Stroke);
-        fprintf(Pointeur_File,"<rect x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\" fill=\"#%6s\" stroke-width=\"%d\" stroke=\"#%s\" />\n", Fo.X, Fo.Y, Fo.Width ,Fo.Height,Fo.Fill,Fo.Stroke_Width,Fo.Stroke);
+        fprintf(Pointeur_File,"<rect id=\"%d\" x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\" fill=\"#%6s\" stroke-width=\"%d\" stroke=\"#%s\" />\n",Fo.Id, Fo.X, Fo.Y, Fo.Width ,Fo.Height,Fo.Fill,Fo.Stroke_Width,Fo.Stroke);
         break;
     case Ellipse :
         printf("Set your settings : \n");
@@ -123,7 +124,7 @@ int Add_Form (Forme Fo)
         scanf("%d",&Fo.Stroke_Width);
         printf("Stroke Color Hexa RGB : ");
         scanf("%6s",Fo.Stroke);
-        fprintf(Pointeur_File,"<ellipse cx=\"%d\" cy=\"%d\" rx=\"%d\" y=\"%d\" fill=\"#%6s\" stroke-width=\"%d\" stroke=\"#%s\"/>\n", Fo.X, Fo.Y, Fo.Xr ,Fo.Yr,Fo.Fill,Fo.Stroke_Width,Fo.Stroke);
+        fprintf(Pointeur_File,"<ellipse id=\"%d\" cx=\"%d\" cy=\"%d\" rx=\"%d\" y=\"%d\" fill=\"#%6s\" stroke-width=\"%d\" stroke=\"#%s\"/>\n",Fo.Id, Fo.X, Fo.Y, Fo.Xr ,Fo.Yr,Fo.Fill,Fo.Stroke_Width,Fo.Stroke);
         break;
     case Polyline :
         int c ;
@@ -145,7 +146,7 @@ int Add_Form (Forme Fo)
         printf("2-No\n");
         scanf("%d",&c);
         if(c==2)
-            fprintf(Pointeur_File,"<polyline points=\"%d,%d %d,%d\" stroke=\"#%s\" stroke-width=\"%d\" />\n", Fo.Points[0].A, Fo.Points[1].B, Fo.Points[2].A ,Fo.Points[3].B,Fo.Stroke,Fo.Stroke_Width);
+            fprintf(Pointeur_File,"<polyline id=\"%d\" points=\"%d,%d %d,%d\" stroke=\"#%s\" stroke-width=\"%d\" />\n",Fo.Id, Fo.Points[0].A, Fo.Points[1].B, Fo.Points[2].A ,Fo.Points[3].B,Fo.Stroke,Fo.Stroke_Width);
         else if(c==1)
             break;
         else 
