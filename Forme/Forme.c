@@ -33,8 +33,8 @@ typedef struct Forme_S
     int Width;
     int Height;
     int Stroke_Width;
-    char Fill[6];
-    char Stroke[6];
+    char Fill[7];
+    char Stroke[7];
     int R;
     int Xr;
     int Yr;
@@ -105,7 +105,7 @@ int Add_Form (Forme Fo)
         scanf("%d",&Fo.Stroke_Width);
         printf("Stroke Color Hexa RGB : ");
         scanf("%6s",Fo.Stroke);
-        fprintf(Pointeur_File,"<rect x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\" fill=\"#%s\" stroke-width=\"%d\" stroke=\"#%s\" />\n", Fo.X, Fo.Y, Fo.Width ,Fo.Height,Fo.Fill,Fo.Stroke_Width,Fo.Stroke);
+        fprintf(Pointeur_File,"<rect x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\" fill=\"#%6s\" stroke-width=\"%d\" stroke=\"#%s\" />\n", Fo.X, Fo.Y, Fo.Width ,Fo.Height,Fo.Fill,Fo.Stroke_Width,Fo.Stroke);
         break;
     case Ellipse :
         printf("Set your settings : \n");
@@ -123,9 +123,10 @@ int Add_Form (Forme Fo)
         scanf("%d",&Fo.Stroke_Width);
         printf("Stroke Color Hexa RGB : ");
         scanf("%6s",Fo.Stroke);
-        fprintf(Pointeur_File,"<ellipse cx=\"%d\" cy=\"%d\" rx=\"%d\" y=\"%d\" fill=\"#%s\" stroke-width=\"%d\" stroke=\"#%s\"/>\n", Fo.X, Fo.Y, Fo.Xr ,Fo.Yr,Fo.Fill,Fo.Stroke_Width,Fo.Stroke);
+        fprintf(Pointeur_File,"<ellipse cx=\"%d\" cy=\"%d\" rx=\"%d\" y=\"%d\" fill=\"#%6s\" stroke-width=\"%d\" stroke=\"#%s\"/>\n", Fo.X, Fo.Y, Fo.Xr ,Fo.Yr,Fo.Fill,Fo.Stroke_Width,Fo.Stroke);
         break;
     case Polyline :
+        int c ;
         printf("Set your settings : \n");   
         printf("X1 : ");
         scanf("%d",&Fo.Points[0].A);
@@ -139,7 +140,16 @@ int Add_Form (Forme Fo)
         scanf("%d",&Fo.Stroke_Width);
         printf("Stroke Color Hexa RGB : ");
         scanf("%6s",Fo.Stroke);
-        fprintf(Pointeur_File,"<polyline points=\"%d,%d %d,%d\" stroke=\"#%s\" stroke-width=\"%d\" />\n", Fo.Points[0].A, Fo.Points[1].B, Fo.Points[2].A ,Fo.Points[3].B,Fo.Stroke,Fo.Stroke_Width);
+        printf("Do you want another line ?\n");
+        printf("1-Yes\n");
+        printf("2-No\n");
+        scanf("%d",&c);
+        if(c==2)
+            fprintf(Pointeur_File,"<polyline points=\"%d,%d %d,%d\" stroke=\"#%s\" stroke-width=\"%d\" />\n", Fo.Points[0].A, Fo.Points[1].B, Fo.Points[2].A ,Fo.Points[3].B,Fo.Stroke,Fo.Stroke_Width);
+        else if(c==1)
+            break;
+        else 
+            printf("\n Invalid Synthax\n");
         break;
         default : 
         printf("\n Invalid Form \n");
