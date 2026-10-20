@@ -94,6 +94,7 @@ int main (void)
             }
             break;
         case 3 :
+            View_File();
             break;
         case 4:
             return 0 ;

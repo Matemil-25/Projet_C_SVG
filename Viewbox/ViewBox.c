@@ -94,7 +94,6 @@ int Delete_Form(void)
     remove("Html_File/Projet_1.tmp");
     return 1;
 }
-
 /**
  * @brief Modifie une forme SVG existante dans le fichier HTML.
  *
@@ -197,4 +196,11 @@ int Modify_Form(void)
     remove("Html_File/Projet_1.tmp");
     printf("Aucune forme avec cet ID\n");
     return 1;
+}
+/**
+ * @brief Ouvre le fichier HTML dans le navigateur par défaut.
+ */
+void View_File(void)
+{
+    system("firefox Html_File/Projet_1.html");
 }
