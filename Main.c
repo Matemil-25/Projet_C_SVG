@@ -60,11 +60,38 @@ int main (void)
                 }
                 else if (Ch ==2)
                     Ch = 0;
-                else 
-                    printf("\nInvalid Sythax\n");  
+                else
+                {
+                    printf("\nInvalid Sythax\n");
+                    Ch = 0;  
+                }
             }
             break;
         case 2 :
+            Ch += 1;
+            while (Ch !=0)
+            {
+                printf("1-Edit File\n");
+                printf("2-Delete File\n");
+                printf("3-leave\n");
+                printf(" : ");
+                scanf("%d", &Ch);
+                switch (Ch)
+                {
+                    case 1 :
+                        Modify_Form();
+                        break;
+                    case 2 :
+                        Delete_Form();
+                        break;
+                    case 3 :
+                        Ch = 0;
+                        break;
+                    default :
+                        printf("\nInvalid Sythax\n");
+                        break;  
+                }
+            }
             break;
         case 3 :
             break;

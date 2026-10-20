@@ -79,7 +79,7 @@ Forme_T Choice(void)
         printf("1-Rectangle/square      3-line/Polygon/Polyline\n");
         printf("2-Ellipse/Circle\n");
         printf(" : ");
-        scanf("%d", &Choice);   
+        scanf("%d", &Choice);
         switch (Choice)
         {
             case 1:
@@ -93,9 +93,10 @@ Forme_T Choice(void)
                 break;
             default:
                 printf("This is not in a choice \n");
-                Choice = 0;
+                continue;
                 break;
         }
+        
     }
     return F;
 }
@@ -168,14 +169,14 @@ int Add_Form (Forme Fo)
         int i;
         int Nb_Points ;
         printf("Set your settings:\n");
-        printf("How many points do you want? (2-6): ");
+        printf("How many points do you want? (2-12): ");
         scanf("%d", &Nb_Points);
         for (i = 0; i < Nb_Points; i++)
         {
             printf("X%d: ", i + 1);
             scanf("%d", &Fo.Points[i].A);
             printf("Y%d: ", i + 1);
-            scanf("%d", &Fo.Points[i].B);  
+            scanf("%d", &Fo.Points[i].B);
         }
         printf("Stroke width: ");
         scanf("%d", &Fo.Stroke_Width); 
