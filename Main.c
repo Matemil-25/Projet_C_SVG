@@ -25,6 +25,10 @@
  */
 int main (void)
 {
+    printf("|======================================|\n");
+    printf("|      Welcome to the SVG project      |\n");
+    printf("|======================================|\n");
+    printf("________________________________________\n");
     FILE* Pointeur_File;
     Pointeur_File = fopen("Html_File/Projet_1.html","a");
     Forme F ;
@@ -33,10 +37,11 @@ int main (void)
     F.Id = 0 ; 
     while (1)
     {
-        printf("1- Create Project\n");
-        printf("2- Edit Project\n");
-        printf("3- View Project\n");
-        printf("4- Quit\n");
+        printf("=> 1 -Create Project\n");
+        printf("=> 2 -Edit Project\n");
+        printf("=> 3 -View Project\n");
+        printf("=> 4 -Quit\n");
+        printf("___________________________________\n");
         printf(" : ");
         scanf("%d", &C);    
         switch (C)
@@ -47,8 +52,9 @@ int main (void)
             
             while (Ch != 0)
             {
-                printf("1-Add Shape\n");
-                printf("2-leave\n");
+                printf("=> 1 -Add Shape\n");
+                printf("=> 2 -leave\n");
+                printf("________________\n");
                 printf(" : ");
                 scanf("%d", &Ch);
                 if (Ch == 1)
@@ -71,9 +77,10 @@ int main (void)
             Ch += 1;
             while (Ch !=0)
             {
-                printf("1-Edit File\n");
-                printf("2-Delete File\n");
-                printf("3-leave\n");
+                printf("=> 1 -Edit File\n");
+                printf("=> 2 -Delete File\n");
+                printf("=> 3 -leave\n");
+                printf("_________________\n");
                 printf(" : ");
                 scanf("%d", &Ch);
                 switch (Ch)

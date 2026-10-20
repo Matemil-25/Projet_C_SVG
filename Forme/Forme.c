@@ -76,8 +76,11 @@ Forme_T Choice(void)
     while (Choice == 0)         
     {
         printf("Which form do you want to create ?\n");
-        printf("1-Rectangle/square      3-line/Polygon/Polyline\n");
-        printf("2-Ellipse/Circle\n");
+        printf("___________________________________\n");
+        printf("=> 1 - Rectangle | Square\n");
+        printf("=> 2 - Ellipse | Circle\n");
+        printf("=> 3 - line | Polygon | Polyline\n");
+        printf("___________________________________\n");
         printf(" : ");
         scanf("%d", &Choice);
         switch (Choice)
@@ -131,56 +134,60 @@ int Add_Form (Forme Fo)
     {
     case Rectangle:
         printf("Set your settings : \n");
-        printf("X : ");
+        printf("_____________________\n");
+        printf("=> X : ");
         scanf("%d",&Fo.X);
-        printf("Y : ");
+        printf("=> Y : ");
         scanf("%d",&Fo.Y);
-        printf("Width : ");
+        printf("=> Width : ");
         scanf("%d",&Fo.Width);
-        printf("Height : ");
+        printf("=> Height : ");
         scanf("%d",&Fo.Height);
-        printf("Color Hexa RGB : ");
+        printf("=> Color Hexa RGB : ");
         scanf("%6s",Fo.Fill);
-        printf("Stroke width : " );
+        printf("=> Stroke width : " );
         scanf("%d",&Fo.Stroke_Width);
-        printf("Stroke Color Hexa RGB : ");
+        printf("=> Stroke Color Hexa RGB : ");
         scanf("%6s",Fo.Stroke);
         fprintf(Pointeur_File,"<rect id=\"%d\" x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\" fill=\"#%6s\" stroke-width=\"%d\" stroke=\"#%s\" />\n",Fo.Id, Fo.X, Fo.Y, Fo.Width ,Fo.Height,Fo.Fill,Fo.Stroke_Width,Fo.Stroke);
         break;
     case Ellipse :
         printf("Set your settings : \n");
-        printf("X : ");
+        printf("_____________________\n");
+        printf("=> X : ");
         scanf("%d",&Fo.X);
-        printf("Y : ");
+        printf("=> Y : ");
         scanf("%d",&Fo.Y);
-        printf("Rx : ");
+        printf("=> Rx : ");
         scanf("%d",&Fo.Xr);
-        printf("Ry : ");
+        printf("=> Ry : ");
         scanf("%d",&Fo.Yr);
-        printf("Color Hexa RGB : ");
+        printf("=> Color Hexa RGB : ");
         scanf("%6s",Fo.Fill);
-        printf("Stroke width : " );
+        printf("=> Stroke width : " );
         scanf("%d",&Fo.Stroke_Width);
-        printf("Stroke Color Hexa RGB : ");
+        printf("=> Stroke Color Hexa RGB : ");
         scanf("%6s",Fo.Stroke);
         fprintf(Pointeur_File,"<ellipse id=\"%d\" cx=\"%d\" cy=\"%d\" rx=\"%d\" y=\"%d\" fill=\"#%6s\" stroke-width=\"%d\" stroke=\"#%s\"/>\n",Fo.Id, Fo.X, Fo.Y, Fo.Xr ,Fo.Yr,Fo.Fill,Fo.Stroke_Width,Fo.Stroke);
         break;
     case Polyline :
         int i;
         int Nb_Points ;
-        printf("Set your settings:\n");
-        printf("How many points do you want? (2-12): ");
+        printf("Set your settings :\n");
+        printf("_____________________\n");
+        printf("How many points do you want? (2-12) : ");
         scanf("%d", &Nb_Points);
+        printf("___________________________________\n");
         for (i = 0; i < Nb_Points; i++)
         {
-            printf("X%d: ", i + 1);
+            printf("=> X%d : ", i + 1);
             scanf("%d", &Fo.Points[i].A);
-            printf("Y%d: ", i + 1);
+            printf("=> Y%d : ", i + 1);
             scanf("%d", &Fo.Points[i].B);
         }
-        printf("Stroke width: ");
+        printf("=> Stroke width: ");
         scanf("%d", &Fo.Stroke_Width); 
-        printf("Stroke Color Hexa RGB: ");
+        printf("=> Stroke Color Hexa RGB: ");
         scanf("%6s", Fo.Stroke);
         fprintf(Pointeur_File,"<polyline id=\"%d\" points=\"",Fo.Id);
         for (i = 0; i < Nb_Points; i++)

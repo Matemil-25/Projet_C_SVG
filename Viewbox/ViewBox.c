@@ -45,10 +45,10 @@ int Delete_Form(void)
     int Id;
     int Id_Supprimer;
     int Trouve = 0;
-    /* Ouvrir le fichier SVG en lecture */
     Pointeur_File = fopen("Html_File/Projet_1.html", "r");
-    /* Afficher les formes disponibles */
-    printf("\n===== Formes disponibles =====\n");
+    
+    printf("Formes disponibles\n");
+    printf("___________________\n");
     while (fgets(Ligne, sizeof(Ligne), Pointeur_File) != NULL)
     {
         if (strstr(Ligne, "<rect") != NULL)
@@ -58,18 +58,16 @@ int Delete_Form(void)
         else if (strstr(Ligne, "<polyline") != NULL)
             printf("Polyline : %s", Ligne);
     }
-    /* Demander l'ID à supprimer */
+    
+    printf("_____________________\n");
     printf("\nID de la forme a supprimer : ");
     scanf("%d", &Id_Supprimer);
-    /* Revenir au début du fichier */
     rewind(Pointeur_File);
-    /* Créer le fichier temporaire */
     Fichier_Temporaire = fopen("Html_File/Projet_1.tmp", "w");
-    /* Lire et recopier les lignes */
+
     while (fgets(Ligne, sizeof(Ligne), Pointeur_File) != NULL)
     {
         char *Position_Id = strstr(Ligne, "id=\"");
-        /* Vérifier si la ligne possède un ID */
         if (Position_Id != NULL)
         {
             Position_Id += 4;
@@ -84,7 +82,6 @@ int Delete_Form(void)
     }
     fclose(Pointeur_File);
     fclose(Fichier_Temporaire);
-    /* Remplacer le fichier original */
     if (Trouve)
     {
         rename("Html_File/Projet_1.tmp","Html_File/Projet_1.html");
@@ -133,10 +130,10 @@ int Modify_Form(void)
     int Id_Modifier;
     int Trouve = 0;
     int Caractere;
-    /* Ouverture du fichier SVG */
     Pointeur_File = fopen("Html_File/Projet_1.html", "r");
-    /* Affichage des formes disponibles */
-    printf("\n===== Formes disponibles =====\n");
+
+    printf("Formes disponibles\n");
+    printf("_____________________\n");
     while (fgets(Ligne, sizeof(Ligne), Pointeur_File) != NULL)
     {
         if (strstr(Ligne, "<rect") != NULL || strstr(Ligne, "<ellipse") != NULL || strstr(Ligne, "<polyline") != NULL)
@@ -145,13 +142,14 @@ int Modify_Form(void)
         }
     }
     /* Demande de l'ID */
+    printf("_____________________\n");
     printf("\nID de la forme a modifier : ");
 	scanf("%d", &Id_Modifier);
 	/* Nettoyage du retour a la ligne */
     while ((Caractere = getchar()) != '\n' && Caractere != EOF)
     {
     }
-    /* Demande de la nouvelle ligne SVG */
+    printf("_____________________\n");
     printf("Entrez la nouvelle ligne SVG :\n");
     if (fgets(Nouvelle_Ligne, sizeof(Nouvelle_Ligne), stdin) == NULL)
     {
@@ -159,11 +157,8 @@ int Modify_Form(void)
         printf("Erreur de lecture\n");
         return 1;
     }
-    /* Retour au debut du fichier */
     rewind(Pointeur_File);
-    /* Creation du fichier temporaire */
     Fichier_Temporaire = fopen("Html_File/Projet_1.tmp", "w");
-    /* Lecture et copie des lignes */
     while (fgets(Ligne, sizeof(Ligne), Pointeur_File) != NULL)
     {
         Position_Id = strstr(Ligne, "id=\"");
@@ -182,17 +177,14 @@ int Modify_Form(void)
         }
         fprintf(Fichier_Temporaire, "%s", Ligne);
     }
-    /* Fermeture des fichiers */
     fclose(Pointeur_File);
     fclose(Fichier_Temporaire);
-    /* Remplacement du fichier original */
     if (Trouve)
     {
         rename("Html_File/Projet_1.tmp","Html_File/Projet_1.html");
         printf("Forme modifiee avec succes !\n");
         return 0;
     }
-    /* Suppression du fichier temporaire si l'ID est introuvable */
     remove("Html_File/Projet_1.tmp");
     printf("Aucune forme avec cet ID\n");
     return 1;
