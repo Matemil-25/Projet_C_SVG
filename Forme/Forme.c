@@ -4,7 +4,7 @@
 
 /**
  * @enum Forme_E
- * @brief Énumération des formes géométriques disponibles.
+ x* @brief Énumération des formes géométriques disponibles.
  *
  * Définit les différents types de formes que le programme
  * peut créer dans le fichier SVG.
@@ -168,7 +168,7 @@ int Add_Form (Forme Fo)
         scanf("%d",&Fo.Stroke_Width);
         printf("=> Stroke Color Hexa RGB : ");
         scanf("%6s",Fo.Stroke);
-        fprintf(Pointeur_File,"<ellipse id=\"%d\" cx=\"%d\" cy=\"%d\" rx=\"%d\" y=\"%d\" fill=\"#%6s\" stroke-width=\"%d\" stroke=\"#%s\"/>\n",Fo.Id, Fo.X, Fo.Y, Fo.Xr ,Fo.Yr,Fo.Fill,Fo.Stroke_Width,Fo.Stroke);
+        fprintf(Pointeur_File,"<ellipse id=\"%d\" cx=\"%d\" cy=\"%d\" rx=\"%d\" ry=\"%d\" fill=\"#%6s\" stroke-width=\"%d\" stroke=\"#%s\"/>\n",Fo.Id, Fo.X, Fo.Y, Fo.Xr ,Fo.Yr,Fo.Fill,Fo.Stroke_Width,Fo.Stroke);
         break;
     case Polyline :
         int i;
